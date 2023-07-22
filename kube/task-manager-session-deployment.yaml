@@ -17,7 +17,7 @@ spec:
       containers:
         - name: taskmanager
           # image: apache/flink:1.10.3
-          image: flink:1.13.0-scala_2.12
+          image: flink:latest
           args: ["taskmanager"]
           ports:
             - containerPort: 6122
@@ -35,8 +35,8 @@ spec:
           securityContext:
             runAsUser: 9999 # refers to user _flink_ from official flink image, change if necessary
         - name: beam-worker-pool
-          image: apache/beam_python3.8_sdk:2.37.0
-          imagePullPolicy: Never
+          image: apache/beam_python3.10_sdk:2.49.0
+          imagePullPolicy: Always
           args: ["--worker_pool"]
           ports:
             - containerPort: 50000
