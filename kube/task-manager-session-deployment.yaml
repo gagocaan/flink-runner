@@ -16,14 +16,11 @@ spec:
     spec:
       containers:
         - name: taskmanager
-          # image: apache/flink:1.10.3
-          image: flink:latest
+          image: apache/flink:latest
           args: ["taskmanager"]
           ports:
             - containerPort: 6122
               name: rpc
-            - containerPort: 6125
-              name: query-state
           livenessProbe:
             tcpSocket:
               port: 6122
@@ -34,18 +31,6 @@ spec:
               mountPath: /opt/flink/conf/
           securityContext:
             runAsUser: 9999 # refers to user _flink_ from official flink image, change if necessary
-        - name: beam-worker-pool
-          image: apache/beam_python3.10_sdk:2.49.0
-          imagePullPolicy: Always
-          args: ["--worker_pool"]
-          ports:
-            - containerPort: 50000
-              name: pool
-          livenessProbe:
-            tcpSocket:
-              port: 50000
-            initialDelaySeconds: 30
-            periodSeconds: 60
       volumes:
         - name: flink-config-volume
           configMap:

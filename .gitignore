@@ -125,3 +125,6 @@ report.xml
 # Emacs backup files
 *#
 *~
+
+# Apple
+._*

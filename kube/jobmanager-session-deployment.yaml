@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
         - name: jobmanager
-          # image: apache/flink:1.10.3
-          image: flink:latest
+          image: apache/flink:latest
           args: ["jobmanager"]
           ports:
             - containerPort: 6123

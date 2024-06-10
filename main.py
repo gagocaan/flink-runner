@@ -7,7 +7,7 @@ from apache_beam.options.pipeline_options import PipelineOptions
 def run():
     pipeline_options = PipelineOptions(
         runner="FlinkRunner",
-        flink_master="localhost:8081",
+        flink_master="localhost:59642",
         environment_type="EXTERNAL",
         environment_config="localhost:50000",
     )
